@@ -9,7 +9,7 @@ export const add = (description) => {
       ...store.getState(),
       {
         id: ++id,
-        description: description,
+        description,
         resolved: false,
       },
     ],
@@ -26,13 +26,14 @@ export const remove = (id) => {
 export const resolve = (id) => {
   const immutableState = [...store.getState()];
 
-  
   const index = immutableState.findIndex((bug) => bug.id === id);
-  console.log(index);
-  // state[index].resolved = true;
+  const bug = { ...immutableState[index] };
+
+  bug.resolved = true;
+  immutableState[index] = bug;
 
   return {
     type: actions.BUG_RESOLVE,
-    payload: state,
+    payload: immutableState,
   };
 };

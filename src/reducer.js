@@ -8,8 +8,8 @@ export const reducer = (state = [], action) => {
     case actions.BUG_REMOVE:
       return [...action.payload];
 
-    /* case "RESOLVE_BUG":
-      return [...action.payload]; */
+    case actions.BUG_RESOLVE:
+      return [...action.payload];
 
     default:
       return state;
