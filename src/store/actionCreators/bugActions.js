@@ -1,10 +1,11 @@
-import { store } from "./store";
-import * as actions from "./actionTypes";
+// action creators
+import store from "../configureStore";
+import * as actionTypes from "../actionTypes";
 
 let id = 0;
 export const add = (description) => {
   return {
-    type: actions.BUG_ADD,
+    type: actionTypes.BUG_ADD,
     payload: [
       ...store.getState(),
       {
@@ -18,7 +19,7 @@ export const add = (description) => {
 
 export const remove = (id) => {
   return {
-    type: actions.BUG_REMOVE,
+    type: actionTypes.BUG_REMOVE,
     payload: [...store.getState()].filter((bug) => bug.id !== id),
   };
 };
@@ -33,7 +34,7 @@ export const resolve = (id) => {
   immutableState[index] = bug;
 
   return {
-    type: actions.BUG_RESOLVE,
+    type: actionTypes.BUG_RESOLVE,
     payload: immutableState,
   };
 };
